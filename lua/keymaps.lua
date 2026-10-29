@@ -95,3 +95,11 @@ vim.keymap.set({ "n", "t" }, "<C-,>", "<cmd>ClaudeCode<cr>", { desc = "Toggle Cl
 vim.keymap.set("n", "<space>cc", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude Code" })
 vim.keymap.set("n", "<space>cC", "<cmd>ClaudeCodeContinue<cr>", { desc = "Claude Code: продолжить диалог" })
 vim.keymap.set("n", "<space>cr", "<cmd>ClaudeCodeResume<cr>", { desc = "Claude Code: история диалогов" })
+
+-----------------------------------------------------------
+--                      Diagnostics
+-----------------------------------------------------------
+vim.keymap.set("n", "<space>d", vim.diagnostic.open_float, { desc = "Показать ошибку под курсором" })
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Предыдущая ошибка" })
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Следующая ошибка" })
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, { desc = "Список ошибок" })

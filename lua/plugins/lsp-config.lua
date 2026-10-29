@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return {
   {
 		"mason-org/mason.nvim",
@@ -40,7 +41,9 @@ return {
 			vim.lsp.enable("ts_ls")
 			--C++
 			vim.lsp.config("clangd", {
-        capabilities = capabilities
+        capabilities = capabilities,
+        -- --clang-tidy: диагностика по .clang-tidy прямо в редакторе
+        cmd = { "clangd", "--clang-tidy", "--background-index" },
       })
 			vim.lsp.enable("clangd")
 			--CMake
@@ -63,10 +66,10 @@ return {
         capabilities = capabilities
       })
 			vim.lsp.enable("zuban")
-	 
+
       -- LaMa LSP
       local lama_server_path = "/home/villebois/Lama-lsp/server/out/server.js"
-      
+
       vim.lsp.config("lama_lsp", {
         cmd = { "node", lama_server_path, "--stdio" },
         filetypes = { "lama" },

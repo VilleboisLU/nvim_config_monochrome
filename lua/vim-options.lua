@@ -42,3 +42,15 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.treesitter.query.add_predicate("is-not?", function(match, pattern, bufnr, predicate)
   return false
 end, { force = true })
+
+-------------------------------------------
+---           diagnostics
+-------------------------------------------
+
+vim.diagnostic.config({
+  virtual_text = { prefix = "●", source = "if_many" },
+  signs = true,
+  underline = true,
+  severity_sort = true,
+  float = { border = "rounded", source = true },
+})
